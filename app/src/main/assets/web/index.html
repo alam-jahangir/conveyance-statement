@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Conveyance Statement</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="bar">
+  <h1>Conveyance</h1>
+  <nav>
+    <button data-tab="entries" class="on">Entries</button>
+    <button data-tab="report">Report</button>
+    <button data-tab="profile">Profile</button>
+  </nav>
+  <span id="status" class="status"></span>
+</header>
+
+<main>
+  <section id="tab-entries" class="tab on">
+    <form id="entryForm" autocomplete="off">
+      <input type="hidden" id="eId">
+      <label class="wide">Company <select id="eCompany" required></select></label>
+      <label>Date <input type="date" id="eDate" required></label>
+      <label>Head <input list="heads" id="eHead" required placeholder="Train, Food…"></label>
+      <datalist id="heads"><option>Train<option>Bus<option>Rickshaw<option>Food<option>CNG<option>Other</datalist>
+      <label>From <input id="eFrom" placeholder="Home"></label>
+      <label>To <input id="eTo" placeholder="Ishwardi station"></label>
+      <label class="wide">Purpose of work <input id="ePurpose"></label>
+      <label>Amount (৳) <input type="number" id="eAmount" min="0" step="1" inputmode="numeric" required></label>
+      <div class="actions">
+        <button type="submit" id="saveBtn">Add entry</button>
+        <button type="button" id="cancelBtn" class="ghost" hidden>Cancel edit</button>
+      </div>
+    </form>
+    <div class="scroll"><table id="entryTable"><thead>
+      <tr><th>Date</th><th>Company</th><th>Head</th><th>Route</th><th class="r">Amount</th><th></th></tr></thead><tbody></tbody></table></div>
+    <p id="emptyMsg" class="empty">No entries yet. Add the first conveyance above.</p>
+  </section>
+
+  <section id="tab-report" class="tab">
+    <div class="filters">
+      <label>Company <select id="fCompany"></select></label>
+      <label>From <input type="date" id="fFrom"></label>
+      <label>To <input type="date" id="fTo"></label>
+      <button id="printBtn">Print / Save PDF</button>
+    </div>
+    <article id="sheet" class="sheet"></article>
+  </section>
+
+  <section id="tab-profile" class="tab">
+    <form id="profileForm">
+      <label class="wide">Company
+        <select id="pCompany" required></select></label>
+      <label>Prepared by <input id="pName" required></label>
+      <label>Designation <input id="pRole"></label>
+      <div class="actions"><button type="submit">Save profile</button></div>
+    </form>
+  </section>
+</main>
+<script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,78 @@
+:root{
+  --ink:#111;--mute:#666;--rule:#bbb;--bg:#f2f2f0;--paper:#fff;--err:#a01818;
+  --font:"Segoe UI",Roboto,"Noto Sans","Noto Sans Bengali",system-ui,sans-serif;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-print]){--bg:#161616}
+}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{font:15px/1.4 var(--font);color:var(--ink);background:var(--bg);
+  padding:env(safe-area-inset-top) 0 env(safe-area-inset-bottom)}
+.bar{display:flex;flex-wrap:wrap;align-items:center;gap:8px 16px;padding:10px 14px;
+  background:var(--paper);border-bottom:3px double var(--ink);position:sticky;top:0;z-index:5}
+.bar h1{font-size:18px;margin:0;font-weight:700}
+nav{display:flex;gap:4px}
+nav button{background:none;border:1px solid transparent;padding:6px 12px;font:inherit;color:var(--ink);cursor:pointer}
+nav button.on{border-color:var(--ink);font-weight:600}
+.status{margin-left:auto;font-size:12px;color:var(--mute)}
+main{padding:14px;max-width:960px;margin:auto}
+.tab{display:none}.tab.on{display:block}
+form{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;
+  background:var(--paper);border:1px solid var(--ink);padding:12px;margin-bottom:14px}
+label{display:flex;flex-direction:column;font-size:12px;color:var(--mute);gap:3px}
+label.wide{grid-column:1/-1}
+input,select{font:15px var(--font);padding:8px;border:1px solid var(--rule);border-radius:0;color:var(--ink);background:#fff}
+input:focus,select:focus,button:focus-visible{outline:2px solid var(--ink);outline-offset:1px}
+.actions{grid-column:1/-1;display:flex;gap:8px}
+button{font:600 14px var(--font);padding:9px 16px;border:1px solid var(--ink);background:var(--ink);color:#fff;cursor:pointer}
+button.ghost{background:#fff;color:var(--ink)}
+button.del{background:#fff;color:var(--err);border-color:var(--err);padding:4px 8px;font-weight:500}
+button.edit{background:#fff;color:var(--ink);padding:4px 8px;font-weight:500}
+.scroll{overflow-x:auto;background:var(--paper)}
+table{width:100%;border-collapse:collapse}
+th,td{border:1px solid var(--rule);padding:7px 9px;text-align:left;vertical-align:top}
+thead th{border-color:var(--ink);border-width:2px 1px;background:#fff}
+.r{text-align:right;white-space:nowrap}
+.empty{color:var(--mute);text-align:center;padding:24px}
+.filters{display:flex;flex-wrap:wrap;gap:10px;align-items:flex-end;margin-bottom:12px}
+
+/* ---- the statement itself ---- */
+.sheet{background:var(--paper);color:#111;padding:28px 30px;border:1px solid var(--rule);min-width:0;overflow-x:auto}
+.sheet header{display:flex;justify-content:space-between;gap:16px;border-bottom:3px double #111;padding-bottom:12px;margin-bottom:18px}
+.sheet h2{font-size:26px;margin:0;letter-spacing:.2px;text-transform:uppercase}
+.sheet .sub{font-size:16px;color:#555;margin-top:2px;text-transform:uppercase}
+.sheet .range{color:#666;margin-top:6px}
+.sheet .by{text-align:right;color:#666;font-size:12px}
+.sheet .by b{display:block;font-size:19px;color:#111;font-weight:600}
+.sheet h3{font-size:16px;margin:0 0 6px;font-weight:600}
+.top{display:grid;grid-template-columns:1.1fr 1fr;gap:18px;margin-bottom:20px}
+.sheet table.sum thead th{border:2px solid #111}
+.sheet table.sum td{border:1px solid #999}
+.stats{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.stat{border:2px solid #111;border-radius:6px;padding:8px 10px}
+.stat small{display:block;font-size:11px;color:#555;text-transform:uppercase}
+.stat b{font-size:24px;font-weight:600}
+.sheet table.tx{margin-top:6px}
+.sheet table.tx thead th{border:2px solid #111;font-size:12px;text-transform:uppercase}
+.sheet table.tx td{border:1px solid #999}
+.sheet td.head{font-weight:600}
+.dash{color:#aaa}
+.grand{display:flex;justify-content:flex-end;gap:36px;border:2px solid #111;border-top:0;padding:10px 14px;font-weight:600;font-size:17px}
+.sign{display:flex;justify-content:space-between;gap:40px;margin-top:80px}
+.sign div{flex:1;border-top:1.5px solid #111;padding-top:6px}
+.sign small{display:block;color:#777}
+.foot{display:flex;justify-content:space-between;margin-top:60px;padding-top:8px;border-top:1px solid #aaa;color:#777;font-size:12px}
+@media (max-width:640px){.top{grid-template-columns:1fr}.sheet{padding:16px}.sheet h2{font-size:20px}}
+
+@page{size:A4;margin:12mm}
+@media print{
+  body{background:#fff}
+  .bar,.filters,.tab:not(#tab-report){display:none!important}
+  main{padding:0;max-width:none}
+  #tab-report{display:block!important}
+  .sheet{border:0;padding:0;overflow:visible}
+  tr{break-inside:avoid}
+}
+
+#pCompany,#eCompany,#fCompany{text-transform:uppercase}
