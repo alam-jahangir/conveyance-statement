@@ -8,8 +8,10 @@ DB file on the phone: `databases/conveyance.db` (tables `entries`, `profile`).
 **A. Android Studio:** File > Open this folder > wait for Gradle sync > Build > Build APK(s)
    -> `app/build/outputs/apk/debug/app-debug.apk`. Copy it to the phone and open it (allow "install unknown apps").
    Or plug in the phone (USB debugging on) and press Run.
+   
 **B. No Android Studio:** push this folder to a GitHub repo > Actions tab > "Build APK" > Run workflow > download the
    `conveyance-apk` artifact (contains app-debug.apk).
+   
 **C. Command line** (JDK 17 + Android SDK + Gradle 8.7): `gradle :app:assembleDebug`
 
 ## Preview the UI on a PC
